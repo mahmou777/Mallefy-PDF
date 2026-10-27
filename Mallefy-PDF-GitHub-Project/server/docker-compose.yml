@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mallefy-analytics:
+    build: .
+    container_name: mallefy-analytics-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ADMIN_CHAT_ID=${ADMIN_CHAT_ID}
+    volumes:
+      - ./data:/app/data
